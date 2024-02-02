@@ -42,6 +42,9 @@ def test_query_one():
         print("The county {}, {} voted the most for Trump in 2016 by {:.2f}%.".format(row[0], row[1], round(row[2], 4)*100))
     
     conn.commit()
+    cur.close()
+    conn.close()
+    return None
 
 def test_query_two():
 
@@ -54,7 +57,7 @@ def test_query_two():
 
     cur = conn.cursor()
 
-    sql = " SELECT * FROM elections WHERE totalpop IS NOT null ORDER BY totalpop DESC "
+    sql = """SELECT county, state, trump20, totalpop FROM elections WHERE trump20, totalpop IS NOT null ORDER BY totalpop DESC;"""
     
     cur.execute( sql )
 
@@ -63,10 +66,13 @@ def test_query_two():
     if row == None:
         print("Something went wrong...")
     else:
-        print(row[0], "county had the highest population in 2020 and voted Trump by", row[5], "and Biden by", row[6])
-
+        print("In 2020, the county {}, {} had the highest population of {} people and voted Tump by {:.2f}%.".format(row[0], row[1], row[3], round(row[2], 4)*100))
+   
     conn.commit()
-
+    cur.close()
+    conn.close()
+    return None
+    
 def test_query_three():
 
     conn = psycopg2.connect(
@@ -78,7 +84,7 @@ def test_query_three():
 
     cur = conn.cursor()
 
-    sql = "SELECT * FROM elections WHERE totalvote16 IS NOT null ORDER BY totalvote16 DESC"
+    sql = """SELECT county, state, clinton16, totalvote16 FROM elections WHERE clinton16, totalvote16 IS NOT null ORDER BY totalvote16 DESC;"""
     
     cur.execute( sql )
 
@@ -87,10 +93,12 @@ def test_query_three():
     if row == None:
         print("Something went wrong...")
     else:
-        print("The county with the most total votes in 2016 is", row[0], "and they voted for Clinton by", row[3])
+        print("In 2016, the county {}, {} voted the most in total number of {}, and they voted for Clinton by {:.2f}%.".format(row[0], row[1], row[3], round(row[2], 4)*100))
 
     conn.commit()
-    
+    cur.close()
+    conn.close()
+    return None    
 
 def test_query_four():
 
@@ -109,14 +117,16 @@ def test_query_four():
 
     row = cur.fetchone()
 
-
     if row == None:
         print("Something went wrong...")
     else:
         print("The county with the highest percentage of Black people voted for Trump", row[2], "and Clinton", row[3], "in 2016.")
 
     conn.commit()
-
+    cur.close()
+    conn.close()
+    return None
+    
 def test_query_five():
 
     conn = psycopg2.connect(
@@ -140,11 +150,13 @@ def test_query_five():
         print( " The county", row[0],"had the lowest number of votes towards Trump in New York by", row[2])
 
     conn.commit()
-
+    cur.close()
+    conn.close()
+    return None
 
 test_connection()
 test_query_one()
-'''test_query_two()
+test_query_two()
 test_query_three()
-test_query_four()
+"""test_query_four()
 test_query_five()'''
