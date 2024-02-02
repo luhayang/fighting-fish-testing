@@ -6,9 +6,9 @@ def test_connection():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="panditk",
-        user="panditk",
-        password="square555cow")
+        database="yangl4",
+        user="yangl4",
+        password="stars929bond")
 
     if conn is not None:
         print( "Connection Worked!" )
@@ -24,14 +24,13 @@ def test_query_one():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="panditk",
-        user="panditk",
-        password="square555cow")
+        database="yangl4",
+        user="yangl4",
+        password="stars929bond")
 
     cur = conn.cursor()
 
-    #sql = """SELECT county, state, trump16 FROM elections WHERE trump16 > 0.75 ORDER BY trump16 DESC;"""
-    sql = """SELECT county, state, trump16 FROM elections ORDER BY trump16 DESC;"""
+    sql = """SELECT county, state, trump16 FROM elections WHERE trump16 > 0.75 ORDER BY trump16 DESC;"""
 
     cur.execute( sql )
 
@@ -54,9 +53,9 @@ def test_query_two():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="panditk",
-        user="panditk",
-        password="square555cow")
+        database="yangl4",
+        user="yangl4",
+        password="stars929bond")
 
     cur = conn.cursor()
 
@@ -78,9 +77,9 @@ def test_query_three():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="panditk",
-        user="panditk",
-        password="square555cow")
+        database="yangl4",
+        user="yangl4",
+        password="stars929bond")
 
     cur = conn.cursor()
 
@@ -103,9 +102,9 @@ def test_query_four():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="panditk",
-        user="panditk",
-        password="square555cow")
+        database="yangl4",
+        user="yangl4",
+        password="stars929bond")
 
     cur = conn.cursor()
 
@@ -128,9 +127,9 @@ def test_query_five():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="panditk",
-        user="panditk",
-        password="square555cow")
+        database="yangl4",
+        user="yangl4",
+        password="stars929bond")
 
     cur = conn.cursor()
 
