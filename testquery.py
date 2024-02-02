@@ -30,7 +30,7 @@ def test_query_one():
 
     cur = conn.cursor()
 
-    sql = """SELECT county, state, trump16 FROM elections WHERE trump16 > 0.75 ORDER BY trump16 DESC;"""
+    sql = """SELECT county, state, trump16 FROM elections WHERE IS NOT NULL AND WHERE trump16 > 0.75 ORDER BY trump16 DESC;"""
 
     cur.execute( sql )
 
@@ -57,7 +57,7 @@ def test_query_two():
 
     cur = conn.cursor()
 
-    sql = """SELECT county, state, trump20, totalpop FROM elections WHERE trump20, totalpop IS NOT null ORDER BY totalpop DESC;"""
+    sql = """SELECT county, state, trump20, totalpop FROM elections WHERE trump20 IS NOT NULL AND WHERE totalpop IS NOT NULL ORDER BY totalpop DESC;"""
     
     cur.execute( sql )
 
@@ -84,7 +84,7 @@ def test_query_three():
 
     cur = conn.cursor()
 
-    sql = """SELECT county, state, clinton16, totalvote16 FROM elections WHERE clinton16, totalvote16 IS NOT null ORDER BY totalvote16 DESC;"""
+    sql = """SELECT county, state, clinton16, totalvote16 FROM elections WHERE clinton16 IS NOT NULL AND WHERE totalvote16 IS NOT NULL ORDER BY totalvote16 DESC;"""
     
     cur.execute( sql )
 
@@ -111,7 +111,7 @@ def test_query_four():
 
     cur = conn.cursor()
 
-    sql = " SELECT * FROM elections WHERE trump16 IS NOT null AND clinton16 IS NOT null ORDER BY black DESC"
+    sql = " SELECT * FROM elections WHERE trump16 IS NOT NULL AND clinton16 IS NOT NULL ORDER BY black DESC"
     
     cur.execute( sql )
 
