@@ -11,9 +11,9 @@ def test_connection():
         password="stars929bond")
 
     if conn is not None:
-        print( "Connection Worked!" )
+        print( "Connection Worked! \n" )
     else:
-        print( "Problem with Connection" )
+        print( "Problem with Connection. \n" )
 
     conn.commit()
     conn.close()
@@ -37,9 +37,9 @@ def test_query_one():
     row = cur.fetchone()
 
     if row == None:
-        print("No counties voted for Trump in 2016 by more than 75%")
+        print("No counties voted for Trump in 2016 by more than 75%. \n")
     else:
-        print("The county {}, {} voted the most for Trump in 2016 by {:.2f}%.".format(row[0], row[1], round(row[2], 4)*100))
+        print("The county {}, {} voted the most for Trump in 2016 by {:.2f}%. \n".format(row[0], row[1], round(row[2], 4)*100))
     
     conn.commit()
     cur.close()
@@ -64,9 +64,9 @@ def test_query_two():
     row = cur.fetchone()
 
     if row == None:
-        print("Something went wrong...")
+        print("Something went wrong... \n")
     else:
-        print("In 2020, the county {}, {} had the highest population of {}. They voted for Tump by {:.2f}% and Biden by {:.2f}%.".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100))
+        print("In 2020, the county {}, {} had the highest population of {}. \nThey voted for Tump by {:.2f}% and Biden by {:.2f}%.\n".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100))
    
     conn.commit()
     cur.close()
@@ -91,9 +91,9 @@ def test_query_three():
     row = cur.fetchone()
 
     if row == None:
-        print("Something went wrong...")
+        print("Something went wrong...\n")
     else:
-        print("In 2016, the county {}, {} voted the most in total number of {}. They voted for Trump by {:.2f}% and Clinton by {:.2f}%.".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100))
+        print("In 2016, the county {}, {} voted the most in total number of {}. \n They voted for Trump by {:.2f}% and Clinton by {:.2f}%.\n ".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100))
 
     conn.commit()
     cur.close()
