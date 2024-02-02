@@ -37,7 +37,7 @@ def execute_query_one():
 
     row_list = cur.fetchall()
 
-    if row_list.isEmpty():
+    if not row_list:
         print("No counties voted for Trump in 2016 by more than 75%. \n")
     else:
         print("In 2016, top 5 counties that voted the most for Trump are:")
