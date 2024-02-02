@@ -111,16 +111,16 @@ def test_query_four():
 
     cur = conn.cursor()
 
-    sql = " SELECT * FROM elections WHERE trump16 IS NOT NULL AND clinton16 IS NOT NULL ORDER BY black DESC"
+    sql = """SELECT county, state, trump16, clinton16, black FROM elections WHERE trump16 IS NOT NULL AND clinton16 IS NOT NULL AND black IS NOT NULL ORDER BY black DESC;"""
     
     cur.execute( sql )
 
     row = cur.fetchone()
 
     if row == None:
-        print("Something went wrong...")
+        print("Something went wrong...\n")
     else:
-        print("The county with the highest percentage of Black people voted for Trump", row[2], "and Clinton", row[3], "in 2016.")
+        print("In 2016, the county {}, {} had the highest Black population of {}. \nThey voted for Trump by {:.2f}% and Clinton by {:.2f}%.\n ".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100))
 
     conn.commit()
     cur.close()
@@ -138,16 +138,16 @@ def test_query_five():
 
     cur = conn.cursor()
 
-    sql = " SELECT * FROM elections WHERE state = 'NY' ORDER BY trump20 ASC "
+    sql = """SELECT county, state, trump20 FROM elections WHERE state = 'NY' AND trump20 IS NOT NULL ORDER BY trump20;"""
     
     cur.execute( sql )
 
     row = cur.fetchone()
 
     if row == None:
-        print("Something went wrong, try again")
+        print("Something went wrong...\n")
     else:
-        print( " The county", row[0],"had the lowest number of votes towards Trump in New York by", row[2])
+        print("In 2020, the county {}, NY had the lowest number of votes towards Trump by {:.2f}%. \n ".format(row[0], round(row[2], 4)*100))
 
     conn.commit()
     cur.close()
@@ -158,5 +158,5 @@ test_connection()
 test_query_one()
 test_query_two()
 test_query_three()
-'''test_query_four()
-test_query_five()'''
+test_query_four()
+test_query_five()
