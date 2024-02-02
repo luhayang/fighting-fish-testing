@@ -146,16 +146,18 @@ def execute_query_five():
 
     cur = conn.cursor()
 
-    sql = """SELECT county, state, trump20 FROM elections WHERE state = 'NY' AND trump20 IS NOT NULL ORDER BY trump20;"""
+    state_input = input("Enter the abbreviation of state you want to look at.")
+
+    sql = """SELECT county, state, trump20 FROM elections WHERE state = %s AND trump20 IS NOT NULL ORDER BY trump20;"""
     
-    cur.execute( sql )
+    cur.execute( sql, [state_input.upper()] )
 
     row = cur.fetchone()
 
     if row == None:
-        print("Something went wrong...\n")
+        print("You entered wrong state abbreviation. Try again.\n")
     else:
-        print("In 2020, the county {} had the lowest number of votes towards Trump in state New York by {:.2f}%. \n ".format(row[0], round(row[2], 4)*100))
+        print("In 2020, the county {} had the lowest number of votes towards Trump in state {} by {:.2f}%. \n ".format(row[0], round(row[2], 4)*100), row[1])
 
     conn.commit()
     cur.close()
