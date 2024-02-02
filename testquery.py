@@ -57,7 +57,7 @@ def test_query_two():
 
     cur = conn.cursor()
 
-    sql = """SELECT county, state, trump20, totalpop FROM elections WHERE trump20 IS NOT NULL AND totalpop IS NOT NULL ORDER BY totalpop DESC;"""
+    sql = """SELECT county, state, trump20, biden20, totalpop FROM elections WHERE trump20 IS NOT NULL AND biden20 IS NOT NULL AND totalpop IS NOT NULL ORDER BY totalpop DESC;"""
     
     cur.execute( sql )
 
@@ -66,7 +66,7 @@ def test_query_two():
     if row == None:
         print("Something went wrong...")
     else:
-        print("In 2020, the county {}, {} had the highest population of {} people and voted Tump by {:.2f}%.".format(row[0], row[1], row[3], round(row[2], 4)*100))
+        print("In 2020, the county {}, {} had the highest population of {}. They voted for Tump by {:.2f}% and Biden by {:.2f}%.".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100)
    
     conn.commit()
     cur.close()
@@ -84,7 +84,7 @@ def test_query_three():
 
     cur = conn.cursor()
 
-    sql = """SELECT county, state, clinton16, totalvote16 FROM elections WHERE clinton16 IS NOT NULL AND totalvote16 IS NOT NULL ORDER BY totalvote16 DESC;"""
+    sql = """SELECT county, state, trump16, clinton16, totalvote16 FROM elections WHERE trump16 IS NOT NULL AND clinton16 IS NOT NULL AND totalvote16 IS NOT NULL ORDER BY totalvote16 DESC;"""
     
     cur.execute( sql )
 
@@ -93,7 +93,7 @@ def test_query_three():
     if row == None:
         print("Something went wrong...")
     else:
-        print("In 2016, the county {}, {} voted the most in total number of {}, and they voted for Clinton by {:.2f}%.".format(row[0], row[1], row[3], round(row[2], 4)*100))
+        print("In 2016, the county {}, {} voted the most in total number of {}. They voted for Trump by {:.2f)% and Clinton by {:.2f}%.".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100)
 
     conn.commit()
     cur.close()
