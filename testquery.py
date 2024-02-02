@@ -66,7 +66,7 @@ def test_query_two():
     if row == None:
         print("Something went wrong...")
     else:
-        print("In 2020, the county {}, {} had the highest population of {}. They voted for Tump by {:.2f}% and Biden by {:.2f}%.".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100)
+        print("In 2020, the county {}, {} had the highest population of {}. They voted for Tump by {:.2f}% and Biden by {:.2f}%.".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100))
    
     conn.commit()
     cur.close()
@@ -93,7 +93,7 @@ def test_query_three():
     if row == None:
         print("Something went wrong...")
     else:
-        print("In 2016, the county {}, {} voted the most in total number of {}. They voted for Trump by {:.2f)% and Clinton by {:.2f}%.".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100)
+        print("In 2016, the county {}, {} voted the most in total number of {}. They voted for Trump by {:.2f)% and Clinton by {:.2f}%.".format(row[0], row[1], row[4], round(row[2], 4)*100, round(row[3], 4)*100))
 
     conn.commit()
     cur.close()
