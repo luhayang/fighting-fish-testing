@@ -40,9 +40,10 @@ def execute_query_one():
     if row == None:
         print("No counties voted for Trump in 2016 by more than 75%. \n")
     else:
-        print("In 2016, top 5 counties that voted the most for Trump are:)
+        print("In 2016, top 5 counties that voted the most for Trump are:")
         for row in row_list:
-            print("The county {}, {} voted for Trump by {:.2f}%. \n".format(row[0], row[1], round(row[2], 4)*100))
+            print("The county {}, {} voted for Trump by {:.2f}%.".format(row[0], row[1], round(row[2], 4)*100))
+    print("\n")
     
     conn.commit()
     cur.close()
