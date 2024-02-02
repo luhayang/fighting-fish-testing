@@ -34,18 +34,13 @@ def test_query_one():
 
     cur.execute( sql )
 
-    # row = cur.fetchone()
+    row = cur.fetchone()
 
-    #test
-    row = cur.fetchall()
-    for r in row:
-        print (r)
-
-    '''if row == None:
+    if row == None:
         print("No counties voted for Trump in 2016 by more than 75%")
     else:
         print("The county {}, {} voted the most for Trump in 2016 by {:.2f}%.".format(row[0], row[1], round(row[2], 2)*100))
-    '''
+    
     conn.commit()
 
 def test_query_two():
