@@ -6,9 +6,9 @@ def test_connection():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="yangl4",
-        user="yangl4",
-        password="stars929bond")
+        database="panditk",
+        user="panditk",
+        password="square555cow")
 
     if conn is not None:
         print( "Connection Worked!" )
@@ -24,9 +24,9 @@ def test_query_one():
     conn = psycopg2.connect(
         host="localhost",
         port=5432,
-        database="yangl4",
-        user="yangl4",
-        password="stars929bond")
+        database="panditk",
+        user="panditk",
+        password="square555cow")
 
     cur = conn.cursor()
 
