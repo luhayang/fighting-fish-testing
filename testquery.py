@@ -43,7 +43,6 @@ def execute_query_one():
         print("In 2016, top 5 counties that voted the most for Trump are:")
         for row in row_list:
             print("The county {}, {} voted for Trump by {:.2f}%.".format(row[0], row[1], round(row[2], 4)*100))
-    print("\n")
     
     conn.commit()
     cur.close()
@@ -146,7 +145,7 @@ def execute_query_five():
 
     cur = conn.cursor()
 
-    state_input = input("Enter the abbreviation of state you want to look at.")
+    state_input = input("Enter the abbreviation of state you want to look at: ")
 
     sql = """SELECT county, state, trump20 FROM elections WHERE state = %s AND trump20 IS NOT NULL ORDER BY trump20;"""
     
@@ -157,7 +156,7 @@ def execute_query_five():
     if row == None:
         print("You entered wrong state abbreviation. Try again.\n")
     else:
-        print("In 2020, the county {} had the lowest number of votes towards Trump in state {} by {:.2f}%. \n ".format(row[0], round(row[2], 4)*100), row[1])
+        print("In 2020, the county {} had the lowest number of votes towards Trump in state {} by {:.2f}%. \n ".format(row[0], round(row[2], 4)*100, row[1]))
 
     conn.commit()
     cur.close()
