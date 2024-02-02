@@ -42,7 +42,8 @@ def execute_query_one():
     else:
         print("In 2016, top 5 counties that voted the most for Trump are:")
         for row in row_list:
-            print("The county {}, {} voted for Trump by {:.2f}%.".format(row[0], row[1], round(row[2], 4)*100))
+            print("{}, {} voted for Trump by {:.2f}%.".format(row[0], row[1], round(row[2], 4)*100))
+    print("")
     
     conn.commit()
     cur.close()
@@ -156,7 +157,7 @@ def execute_query_five():
     if row == None:
         print("You entered wrong state abbreviation. Try again.\n")
     else:
-        print("In 2020, the county {} had the lowest number of votes towards Trump in state {} by {:.2f}%. \n ".format(row[0], round(row[2], 4)*100, row[1]))
+        print("In 2020, the county {} had the lowest number of votes towards Trump in state {} by {:.2f}%. \n ".format(row[0], row[1], round(row[2], 4)*100))
 
     conn.commit()
     cur.close()
